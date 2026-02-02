@@ -422,51 +422,15 @@ class _SplashScreenState extends State<SplashScreen>
             angle: _logoRotation.value,
             child: Opacity(
               opacity: _logoOpacity.value,
-              child: Container(
+              child: const SizedBox(
                 width: 120,
                 height: 120,
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Color(0xFF6B5FFF),
-                      Color(0xFF2196F3),
-                    ],
-                  ),
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0xFF6B5FFF).withOpacity(0.5),
-                      blurRadius: 40,
-                      spreadRadius: 10,
-                    ),
-                    const BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 20,
-                      offset: Offset(0, 10),
-                    ),
-                  ],
-                ),
+
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    // Inner glow
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: RadialGradient(
-                          colors: [
-                            Colors.white.withOpacity(0.3),
-                            Colors.transparent,
-                          ],
-                        ),
-                      ),
-                    ),
-                    // Icon
-                    const Icon(
+
+                    Icon(
                       Icons.shopping_bag_outlined,
                       size: 50,
                       color: Colors.white,
