@@ -298,11 +298,7 @@ class _SplashScreenState extends State<SplashScreen>
                   child: _buildTextContent(),
                 ),
 
-                // Premium Loading Indicator
-                Positioned(
-                  bottom: 80,
-                  child: _buildPremiumLoader(),
-                ),
+
               ],
             ),
           ),
@@ -558,69 +554,7 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  Widget _buildPremiumLoader() {
-    return Column(
-      children: [
-        // Custom animated loader dots
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(3, (index) {
-            return AnimatedBuilder(
-              animation: _logoController,
-              builder: (context, child) {
-                final delay = index * 0.2;
-                final animation = Tween<double>(
-                  begin: 0.5,
-                  end: 1.0,
-                ).animate(
-                  CurvedAnimation(
-                    parent: _logoController,
-                    curve: Interval(
-                      delay,
-                      delay + 0.4,
-                      curve: Curves.easeInOut,
-                    ),
-                  ),
-                );
 
-                return Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 4),
-                  child: Transform.scale(
-                    scale: animation.value,
-                    child: Container(
-                      width: 8,
-                      height: 8,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.8),
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0xFF6B5FFF).withOpacity(0.5),
-                            blurRadius: 10,
-                            spreadRadius: 2,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              },
-            );
-          }),
-        ),
-        const SizedBox(height: 20),
-        Text(
-          'Loading...',
-          style: TextStyle(
-            color: Colors.white.withOpacity(0.6),
-            fontSize: 12,
-            letterSpacing: 2,
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-      ],
-    );
-  }
 
   Widget _buildShimmerOverlay() {
     return AnimatedBuilder(
